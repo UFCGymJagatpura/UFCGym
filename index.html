@@ -9,10 +9,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-
-      /* 🔴 CENTER GLOW */
       background: radial-gradient(circle at center, rgba(225, 6, 0, 0.35) 0%, #000 60%);
-
       color: #e5e5e5;
       display: flex;
       justify-content: center;
@@ -28,8 +25,6 @@
       width: 90%;
       text-align: center;
       border: 1px solid #1f1f1f;
-
-      /* 🔥 CENTERED HALO GLOW */
       box-shadow: 
         0 15px 50px rgba(0,0,0,0.9),
         0 0 60px rgba(225, 6, 0, 0.25),
@@ -39,7 +34,6 @@
     h1 {
       font-size: 24px;
       margin-bottom: 10px;
-      letter-spacing: 1px;
       color: #ffffff;
     }
 
@@ -47,7 +41,6 @@
       font-size: 15px;
       color: #a1a1a1;
       margin-bottom: 20px;
-      line-height: 1.5;
     }
 
     .highlight {
@@ -63,11 +56,6 @@
       border: 1px solid #2a2a2a;
       background: #0f0f0f;
       color: #fff;
-      font-size: 14px;
-    }
-
-    input::placeholder {
-      color: #6b7280;
     }
 
     button {
@@ -78,11 +66,8 @@
       border-radius: 6px;
       background: #1f1f1f;
       color: #fff;
-      font-size: 14px;
       cursor: pointer;
       font-weight: 600;
-      letter-spacing: 1px;
-      transition: all 0.3s ease;
     }
 
     button:hover {
@@ -92,8 +77,6 @@
     .hidden {
       display: none;
       margin-top: 25px;
-      font-size: 16px;
-      color: #d1d5db;
     }
 
     .offer {
@@ -103,68 +86,60 @@
       color: #ffffff;
     }
 
-    .cta {
-      margin-top: 10px;
-    }
-
     .phone {
       color: #e10600;
       font-weight: 600;
       text-decoration: none;
-      transition: 0.3s;
     }
-
-    .phone:hover {
-      color: #ff3b30;
-    }
-
   </style>
 </head>
+
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>Exclusive Access</h1>
+  <h1>Exclusive Access</h1>
 
-    <p>
-      You have been selected for an <span class="highlight">Complimentary Annual Membership</span>
-      at UFC Gym, Jagatpura.
-    </p>
+  <p>
+    You have been selected for a <span class="highlight">Complimentary Annual Membership</span>
+    at UFC Gym, Jagatpura.
+  </p>
 
-    <p>
-      To proceed:<br>
-      • Refer this to 10 members to activate your membership.<br>
-      • Submit your details below
-    </p>
+  <p>
+    To proceed:<br>
+    • Refer this to 10 members<br>
+    • Submit your details below
+  </p>
 
-<form onsubmit="handleSubmit(event)">
-  <input type="text" id="name" placeholder="Full Name" required>
-  <input type="tel" id="phone" placeholder="Phone Number" required>
-  <button type="submit">CONTINUE</button>
-</form>
+  <!-- FORM -->
+  <form id="leadForm">
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+    <button type="submit">CONTINUE</button>
+  </form>
 
-    <div id="result" class="hidden">
-      😂 <strong>April Fool!</strong><br><br>
-      But here’s something real 👇
+  <!-- RESULT -->
+  <div id="result" class="hidden">
+    😂 <strong>April Fool!</strong><br><br>
 
-      <div class="offer">
-        Flat 35% OFF on Membership — Today Only
-      </div>
-
-      <div class="cta">
-        <a href="tel:8764666699" class="phone">8764666699</a>
-      </div>
+    <div class="offer">
+      Flat 35% OFF on Membership — Today Only
     </div>
 
+    <br>
+    <a href="tel:8764666699" class="phone">8764666699</a>
   </div>
 
- <script>
-function handleSubmit(e) {
+</div>
+
+<script>
+document.getElementById("leadForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
 
+  // SEND DATA TO GOOGLE SHEET
   fetch("https://script.google.com/macros/s/AKfycbzugJtD0SHhe8N-JcQtwEBhq_wOo8fFL3IC-p2qO1mq9cxc7tRTeim7pwt5HiPxsy3X/exec", {
     method: "POST",
     mode: "no-cors",
@@ -175,16 +150,17 @@ function handleSubmit(e) {
       name: name,
       phone: phone
     })
-  })
-  .then(() => {
-    console.log("Sent successfully");
-  })
-  .catch((err) => {
-    console.error("Error:", err);
   });
 
+  // HIDE FORM
+  document.getElementById("leadForm").style.display = "none";
+
+  // SHOW RESULT
   document.getElementById("result").style.display = "block";
-}
+
+  // OPTIONAL: WHATSAPP OPEN
+  // window.open(`https://wa.me/918764666699?text=Hi, my name is ${name}`, "_blank");
+});
 </script>
 
 </body>
