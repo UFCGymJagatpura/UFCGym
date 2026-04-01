@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0a;
+      background: radial-gradient(circle at bottom, #1a0000 0%, #000 60%);
       color: #e5e5e5;
       display: flex;
       justify-content: center;
@@ -18,14 +18,31 @@
     }
 
     .container {
+      position: relative;
       background: #111;
       padding: 40px;
       border-radius: 14px;
       max-width: 420px;
       width: 90%;
       text-align: center;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
       border: 1px solid #1f1f1f;
+      box-shadow: 
+        0 15px 50px rgba(0,0,0,0.9),
+        0 40px 100px rgba(225, 6, 0, 0.35); /* strong red glow */
+    }
+
+    /* 🔴 Red glow layer (key part) */
+    .container::after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 60px;
+      background: radial-gradient(ellipse, rgba(225,6,0,0.5) 0%, transparent 70%);
+      filter: blur(20px);
+      z-index: -1;
     }
 
     h1 {
@@ -78,7 +95,7 @@
     }
 
     button:hover {
-      background: #e10600; /* subtle premium red on hover */
+      background: #e10600;
     }
 
     .hidden {
@@ -97,8 +114,17 @@
 
     .cta {
       margin-top: 10px;
+    }
+
+    .phone {
       color: #e10600;
-      font-weight: 500;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .phone:hover {
+      color: #ff3b30;
     }
 
   </style>
@@ -135,7 +161,7 @@
       </div>
 
       <div class="cta">
-        8764666699
+        📞 <a href="tel:8764666699" class="phone">8764666699</a>
       </div>
     </div>
 
