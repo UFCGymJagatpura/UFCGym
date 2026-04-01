@@ -152,14 +152,21 @@ document.getElementById("leadForm").addEventListener("submit", function(e) {
     })
   });
 
-  // HIDE FORM
+  // 🔥 HIDE EVERYTHING EXCEPT RESULT
+  document.querySelector("h1").style.display = "none";
+  document.querySelectorAll("p").forEach(p => p.style.display = "none");
   document.getElementById("leadForm").style.display = "none";
 
   // SHOW RESULT
   document.getElementById("result").style.display = "block";
 
-  // OPTIONAL: WHATSAPP OPEN
-  window.open(`https://wa.me/918764666699?text=Hi, I’m interested in joining UFC Gym, Jagatpura. Could you share membership plans, pricing and any ongoing offers?`, "_blank");
+  // ⏱️ WHATSAPP AFTER 3 SECONDS
+  setTimeout(() => {
+    window.open(
+      `https://wa.me/918764666699?text=Hi, I’m interested in joining UFC Gym Jagatpura. The facility looks premium. Could you share membership plans and offers?`,
+      "_blank"
+    );
+  }, 3000); // 3000ms = 3 seconds
 });
 </script>
 
