@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #020617, #0f172a);
+      background: #000; /* pure black */
       color: #fff;
       display: flex;
       justify-content: center;
@@ -18,28 +18,31 @@
     }
 
     .container {
-      background: rgba(30, 41, 59, 0.95);
+      background: #0d0d0d;
       padding: 40px;
-      border-radius: 20px;
+      border-radius: 16px;
       max-width: 420px;
       width: 90%;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+      border: 1px solid rgba(255, 0, 0, 0.2);
     }
 
     h1 {
       font-size: 26px;
       margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     p {
-      font-size: 16px;
+      font-size: 15px;
       opacity: 0.85;
       margin-bottom: 20px;
     }
 
     .highlight {
-      color: #22c55e;
+      color: #e10600; /* UFC red */
       font-weight: bold;
     }
 
@@ -47,10 +50,15 @@
       width: 100%;
       padding: 12px;
       margin: 10px 0;
-      border-radius: 10px;
-      border: none;
-      outline: none;
+      border-radius: 8px;
+      border: 1px solid #222;
+      background: #111;
+      color: #fff;
       font-size: 14px;
+    }
+
+    input::placeholder {
+      color: #777;
     }
 
     button {
@@ -58,36 +66,41 @@
       padding: 14px;
       margin-top: 15px;
       border: none;
-      border-radius: 12px;
-      background: #22c55e;
+      border-radius: 8px;
+      background: #e10600;
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
       font-weight: bold;
+      letter-spacing: 1px;
+      transition: 0.3s;
     }
 
     button:hover {
-      background: #16a34a;
+      background: #ff1a1a;
+      transform: scale(1.03);
     }
 
     .hidden {
       display: none;
       margin-top: 25px;
-      font-size: 18px;
+      font-size: 17px;
     }
 
     .offer {
-      color: #facc15;
+      color: #e10600;
       font-weight: bold;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-size: 18px;
     }
+
   </style>
 </head>
 <body>
 
   <div class="container">
 
-    <h1>Congratulations!</h1>
+    <h1>Congratulations</h1>
     <p>
       You have been selected for an <span class="highlight">Exclusive Complimentary Annual Membership</span>
       at UFC Gym, Jagatpura.
@@ -102,16 +115,16 @@
     <form onsubmit="handleSubmit(event)">
       <input type="text" placeholder="Full Name" required>
       <input type="tel" placeholder="Phone Number" required>
-      <button type="submit">Unlock Membership</button>
+      <button type="submit">UNLOCK ACCESS</button>
     </form>
 
     <div id="result" class="hidden">
       😂 <strong>April Fool!</strong><br><br>
       But here’s something real 👇
       <div class="offer">
-  	Flat 35% OFF on Membership — Valid Only for Today!<br><br>
-  	For Assistance & Booking: 8764666699
-	</div>
+        Flat 35% OFF on Membership — Valid Only for Today!<br><br>
+        📞 8764666699
+      </div>
     </div>
 
   </div>
