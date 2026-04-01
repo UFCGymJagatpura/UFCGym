@@ -137,11 +137,11 @@
       • Submit your details below
     </p>
 
-    <form onsubmit="handleSubmit(event)">
-      <input type="text" placeholder="Full Name" required>
-      <input type="tel" placeholder="Phone Number" required>
-      <button type="submit">CONTINUE</button>
-    </form>
+<form onsubmit="handleSubmit(event)">
+  <input type="text" id="name" placeholder="Full Name" required>
+  <input type="tel" id="phone" placeholder="Phone Number" required>
+  <button type="submit">CONTINUE</button>
+</form>
 
     <div id="result" class="hidden">
       😂 <strong>April Fool!</strong><br><br>
@@ -158,12 +158,24 @@
 
   </div>
 
-  <script>
-    function handleSubmit(e) {
-      e.preventDefault();
-      document.getElementById("result").style.display = "block";
-    }
-  </script>
+ <script>
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+
+  fetch("https://script.google.com/a/macros/ufcgym.in/s/AKfycbzugJtD0SHhe8N-JcQtwEBhq_wOo8fFL3IC-p2qO1mq9cxc7tRTeim7pwt5HiPxsy3X/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      name: name,
+      phone: phone
+    })
+  });
+
+  document.getElementById("result").style.display = "block";
+}
+</script>
 
 </body>
 </html>
