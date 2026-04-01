@@ -167,11 +167,17 @@ function handleSubmit(e) {
 
   fetch("https://script.google.com/a/macros/ufcgym.in/s/AKfycbzugJtD0SHhe8N-JcQtwEBhq_wOo8fFL3IC-p2qO1mq9cxc7tRTeim7pwt5HiPxsy3X/exec", {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({
       name: name,
       phone: phone
     })
-  });
+  })
+  .then(res => res.text())
+  .then(data => console.log("Success:", data))
+  .catch(err => console.error("Error:", err));
 
   document.getElementById("result").style.display = "block";
 }
